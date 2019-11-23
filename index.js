@@ -29,19 +29,17 @@ app.post('/sendmail', (req, res) => {
 });
 
 
-bot.on('message', msg => {
-  const { chat: { id } } = msg;
-  const { chat: { username } } = msg;
-  console.log(id, username);
-  if (msg.text === 'start') {
-    createUser(id, username);
-    bot.sendMessage(id, `Hello, ${msg.chat.first_name}! You have successfuly signed up for NotifyMe`)
-  }
-});
 
 app.post('/sendtelegram', (req, res) => {
-
-
+  bot.on('message', msg => {
+    const { chat: { id } } = msg;
+    const { chat: { username } } = msg;
+    console.log(id, username);
+    if (msg.text === 'start') {
+      createUser(id, username);
+      bot.sendMessage(id, `Hello, ${msg.chat.first_name}! You have successfuly signed up for NotifyMe`)
+    }
+  });
 
   bot.on('message', msg => {
     const {chat: { username } } = msg;
