@@ -25,8 +25,8 @@ app.post('/sendmail', (req, res) => {
   console.log(req.body);
 
   let html = buildHtml("2019.23.23", "Test Place");
-  let report = JSON.parse(req.body);
-  console.log(report);
+
+  let report = req.body;
 
   let date = report.date;
   let spotname = report.spotname;
@@ -35,7 +35,7 @@ app.post('/sendmail', (req, res) => {
   let product_name = report.product[0].product_name;
   let count = report.product[0].count;
   let sum = report.product[0].payed_sum;
-  console.log(date);
+  console.log(date, spotname, cash, card, product_name, count, sum);
   res.send(date, spotname, cash, card, product_name, count, sum);
 
   res.send(req.body);
