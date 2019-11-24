@@ -53,4 +53,9 @@ app.post('/sendmail', (req, res) => {
   });*/
 //});
 
+bot.onText(/\/start (.+)/, (msg, match) => {
+
+  bot.sendMessage(msg.chat.id,'Got it, in which category?')
+});
+
 app.listen(3535, () => {console.log('3535')})
