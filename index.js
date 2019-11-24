@@ -29,7 +29,7 @@ app.post('/sendmail', (req, res) => {
   let report = req.body;
 
   let date = report.date;
-  let spotname = report.spotname;
+  let spotname = report.spot_name;
   let cash = report.amount_sell_cash;
   let card = report.amount_sell_card;
   let product_name = report.products[0].product_name;
@@ -37,8 +37,6 @@ app.post('/sendmail', (req, res) => {
   let sum = report.products[0].payed_sum;
   console.log(date, spotname, cash, card, product_name, count, sum);
   res.send(date, spotname, cash, card, product_name, count, sum);
-
-  res.send(req.body);
 
   const msg = {
     to: 'pinkiepie.ny@gmail.com',
