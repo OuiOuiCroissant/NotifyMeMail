@@ -24,7 +24,7 @@ const emailHTML = fs.readFileSync('email.html');
 app.post('/sendmail', (req, res) => {
   console.log(req.body);
 
-  let html = buildHtml();
+//  let html = buildHtml("2019.23.23", "Test Place");
   //let report = JSON.parse(req.body);
   //console.log(report);
 
@@ -45,7 +45,7 @@ app.post('/sendmail', (req, res) => {
     from: 'test@example.com',
     subject: 'Отчет NotifyMe',
     text: 'Text',
-    html: html,
+    html: buildHtml("2019.23.23", "Test Place"),
   };
 
   sgMail.send(msg);
