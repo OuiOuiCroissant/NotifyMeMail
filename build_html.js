@@ -1,10 +1,10 @@
-module.export = function buildHtml(date, placeName) {
+module.exports = function buildHtml(date, placeName) {
     var header = '';
     var body = '';
 
     // ============= head ==============
     // add metas
-    header = header.concat('<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta name=\"viewport\" content=\"width=device-width\"></meta>');
+    header = header.concat('<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"></meta>');
 
     // add title
     header = header.concat("<title>" + placeName + ": отчет за " + date + "</title>");
@@ -29,6 +29,6 @@ module.export = function buildHtml(date, placeName) {
   //  console.log(body, '\n');
     return '<!DOCTYPE html>'
          + '<html><head>' + header + '</head><body>' + body + '</body></html>';
-  };
+  }
 
 //  console.log(buildHtml())
