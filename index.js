@@ -1,5 +1,7 @@
 const express = require('express');
 const request = require('request');
+const fs = require('fs');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
 const TelegramBot = require('node-telegram-bot-api');
@@ -8,14 +10,19 @@ const findUser = require('./mongo-database/find_user.js');
 
 const app = express();
 
+app.use(bodyParser.urlencoded({extended: true}));
+
 const token = process.env.TELEGRAM_BOT_TOKEN;
 
 const bot = new TelegramBot(token, { polling: true });
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+
+
 app.post('/sendmail', (req, res) => {
-  res.send('Mail works')
+  console.log(req.body);
+  res.send(req.body)
 
   const msg = {
     to: 'pinkiepie.ny@gmail.com',
