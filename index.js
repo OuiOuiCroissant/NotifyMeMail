@@ -30,7 +30,7 @@ app.post('/sendmail', (req, res) => {
 
 
 
-app.post('/sendtelegram', (req, res) => {
+//app.post('/sendtelegram', (req, res) => {
   bot.on('message', msg => {
     const { chat: { id } } = msg;
     const { chat: { username } } = msg;
@@ -49,6 +49,6 @@ app.post('/sendtelegram', (req, res) => {
       bot.sendMessage(telegramId, 'Your daily stats');
     }
   });
-});
+//});
 
 app.listen(3535, () => {console.log('3535')})
