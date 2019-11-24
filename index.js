@@ -43,7 +43,7 @@ app.post('/sendmail', (req, res) => {
   res.send(date);
 
   const msg = {
-    to: 'pinkiepie.ny@gmail.com',
+    to: user_email,
     from: 'notifyme@example.com',
     subject: 'Отчет NotifyMe',
     text: 'Text',
