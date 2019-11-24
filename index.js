@@ -18,7 +18,7 @@ const bot = new TelegramBot(token, { polling: true });
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-
+const emailHTML = fs.readFileSync('email.html');
 
 app.post('/sendmail', (req, res) => {
   console.log(req.body);
@@ -43,7 +43,7 @@ app.post('/sendmail', (req, res) => {
     from: 'test@example.com',
     subject: 'Отчет NotifyMe',
     text: 'Text',
-    html: 'Html',
+    html: emailHTML,
   };
 
   sgMail.send(msg);
