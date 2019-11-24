@@ -44,7 +44,6 @@ app.post('/sendmail', (req, res) => {
     }
     if (msg.text === 'stats') {
       findUser(username);
-      console.log(telegramId);
       bot.sendMessage(telegramId, 'Your daily stats');
     }
   });

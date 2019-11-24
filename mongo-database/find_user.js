@@ -8,6 +8,6 @@ module.exports = function findUser(username) {
 
   User.findOne({ username: username }, (err, res) => {
     if (err) {throw err}
-    else {console.log(res.telegramId);}  
+    else {return let telegramId = res.telegramId}  
   });
 };
