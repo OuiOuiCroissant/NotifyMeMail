@@ -39,16 +39,16 @@ app.post('/sendmail', (req, res) => {
       createUser(id, username);
       bot.sendMessage(id, `Hello, ${msg.chat.first_name}! You have successfuly signed up for NotifyMe`)
     }
-  });
-
-  bot.on('message', msg => {
-    const {chat: { username } } = msg;
     if (msg.text === 'stats') {
       findUser(username);
       console.log(telegramId);
       bot.sendMessage(telegramId, 'Your daily stats');
     }
   });
+/*
+  bot.on('message', msg => {
+    const {chat: { username } } = msg;
+  });*/
 //});
 
 app.listen(3535, () => {console.log('3535')})
