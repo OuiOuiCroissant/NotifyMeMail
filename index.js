@@ -22,6 +22,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.post('/sendmail', (req, res) => {
   console.log(req.body);
+  console.log('A');
   //let report = JSON.parse(req.body);
   //console.log(report);
 
