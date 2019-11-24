@@ -56,4 +56,6 @@ bot.onText(/\/call (.+)/, (msg, match) => {
   bot.sendMessage(id, 'Called?')
 });
 
-app.listen(3535, () => {console.log('3535')})
+app.listen((process.env.PORT || 3535), function(){
+  console.log('3535');
+});
