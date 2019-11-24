@@ -53,9 +53,10 @@ app.post('/sendmail', (req, res) => {
   });*/
 //});
 
-bot.onText(/\/start (.+)/, (msg, match) => {
-
-  bot.sendMessage(msg.chat.id,'Got it, in which category?')
+bot.onText(/\/call (.+)/, (msg, match) => {
+  siteUrl = match[1];
+  const { chat: { id } } = msg;
+  bot.sendMessage(id, 'Called?')
 });
 
 app.listen(3535, () => {console.log('3535')})
