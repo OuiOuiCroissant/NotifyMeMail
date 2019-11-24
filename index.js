@@ -24,19 +24,19 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 app.post('/sendmail', (req, res) => {
   console.log(req.body);
 
-//  let html = buildHtml("2019.23.23", "Test Place");
-  //let report = JSON.parse(req.body);
-  //console.log(report);
+  let html = buildHtml("2019.23.23", "Test Place");
+  let report = JSON.parse(req.body);
+  console.log(report);
 
-//  let date = report.date;
-/*  let spotname = report.spotname;
+  let date = report.date;
+  let spotname = report.spotname;
   let cash = report.amount_sell_cash;
   let card = report.amount_sell_card;
   let product_name = report.product[0].product_name;
   let count = report.product[0].count;
-  let sum = report.product[0].payed_sum;*/
-//  console.log(date);
-//  res.send(date/*, spotname, cash, card, product_name, count, sum*/);
+  let sum = report.product[0].payed_sum;
+  console.log(date);
+  res.send(date, spotname, cash, card, product_name, count, sum);
 
   res.send(req.body);
 
