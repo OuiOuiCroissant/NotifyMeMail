@@ -35,6 +35,8 @@ app.post('/sendmail', (req, res) => {
 //  console.log(date);
 //  res.send(date/*, spotname, cash, card, product_name, count, sum*/);
 
+  res.send(req.body);
+
   const msg = {
     to: 'pinkiepie.ny@gmail.com',
     from: 'test@example.com',
