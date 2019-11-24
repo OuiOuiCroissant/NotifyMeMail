@@ -22,28 +22,32 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 app.post('/sendmail', (req, res) => {
-  console.log(req.body);
-
-  let html = buildHtml("2019.23.23", "Test Place");
+  let products_for_email = [];
 
   let report = req.body;
 
   let date = report.date;
-  let spotname = report.spot_name;
-  let cash = report.amount_sell_cash;
-  let card = report.amount_sell_card;
-  let product_name = report.products[0].product_name;
-  let count = report.products[0].count;
-  let sum = report.products[0].payed_sum;
-  console.log(date, spotname, cash, card, product_name, count, sum);
+  let spot_name = report.spot_name;
+  let amount_sell_cash = report.amount_sell_cash;
+  let amount_sell_card = report.amount_sell_card;
+  let user_email = report.products[0].user_email || 'pinkiepie.ny@gmail.com';
+
+  date = date[0]+date[1]+date[2]+date[3]+'.'+date[4]+date[5]+'.'+date[6]+date[7]
+  amount_sell_cash = amount_sell_cash.slice(0, -2);
+  amount_sell_card = amount_sell_card.slice(0, -2);
+  report.products.forEach((item) => {
+    products_for_email.push({"product_name": item.product_name, "count": item.count.slice(0, -8), "payed_sum": item.payed_sum.slice(0, -2)});
+  });
+
+//  console.log(date, spot_name, amount_sell_cash, amount_sell_card, product_name, count, sum);
   res.send(date, spotname, cash, card, product_name, count, sum);
 
   const msg = {
     to: 'pinkiepie.ny@gmail.com',
-    from: 'test@example.com',
+    from: 'notifyme@example.com',
     subject: 'Отчет NotifyMe',
     text: 'Text',
-    html: buildHtml("2019.23.23", "Test Place"),
+    html: buildHtml(date, spot_name, amount_sell_cash, amount_sell_card, products_for_email)
   };
 
   sgMail.send(msg);
@@ -65,11 +69,6 @@ app.post('/sendmail', (req, res) => {
       bot.sendMessage(telega, 'Your daily stats');
     }
   });
-/*
-  bot.on('message', msg => {
-    const {chat: { username } } = msg;
-  });*/
-//});
 
 bot.onText(/\/call (.+)/, (msg, match) => {
   siteUrl = match[1];
