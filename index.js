@@ -7,6 +7,7 @@ const sgMail = require('@sendgrid/mail');
 const TelegramBot = require('node-telegram-bot-api');
 const createUser = require('./mongo-database/create_user.js');
 const findUser = require('./mongo-database/find_user.js');
+const buildHtml = require('./build_html.js');
 
 const app = express();
 
@@ -18,7 +19,7 @@ const bot = new TelegramBot(token, { polling: true });
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const emailHTML = toString(fs.readFileSync('email.html'));
+const emailHTML = fs.readFileSync('email.html');
 
 app.post('/sendmail', (req, res) => {
   console.log(req.body);
