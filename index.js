@@ -31,7 +31,7 @@ app.post('/sendmail', (req, res) => {
   let product_name = report.product[0].product_name;
   let count = report.product[0].count;
   let sum = report.product[0].payed_sum;*/
-
+  console.log(date);
   res.send(date/*, spotname, cash, card, product_name, count, sum*/);
 
   const msg = {
