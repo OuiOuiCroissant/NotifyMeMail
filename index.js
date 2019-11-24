@@ -40,7 +40,7 @@ app.post('/sendmail', (req, res) => {
   });
 
 //  console.log(date, spot_name, amount_sell_cash, amount_sell_card, product_name, count, sum);
-  res.send(date, spot_name, cash, card, product_name, count, sum);
+  res.send(date, spot_name, amount_sell_cash, amount_sell_card, product_name, count, payed_sum);
 
   const msg = {
     to: 'pinkiepie.ny@gmail.com',
