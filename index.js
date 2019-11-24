@@ -12,6 +12,9 @@ const token = process.env.TELEGRAM_BOT_TOKEN;
 
 const bot = new TelegramBot(token, { polling: true });
 
+let getId = [];
+module.exports = { getId }
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.post('/sendmail', (req, res) => {
